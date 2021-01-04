@@ -17,9 +17,8 @@ public class ArticleService {
         this.userRepository = userRepository;
     }
 
-    public List<CustomUser> findArticleByColour(String color) {
-        String req = color.toUpperCase();
-        return userRepository.findArticleByColor(req);
+    public List<CustomUser> findArticleByColour(Color color) {
+        return userRepository.findArticleByColor(color);
     }
 
     public List<CustomUser> findArticleByCount() {

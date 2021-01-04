@@ -25,14 +25,13 @@ public class MainController {
         this.articleService = articleService;
     }
 
-    @GetMapping("by-age/")
+    @GetMapping("/by-age")
     public ResponseEntity<List<CustomUser>> findUserByAge(Integer age){
         return status(HttpStatus.OK).body(userService.findUser(age));
     }
 
-    //FIXME returns incorrect data
-    @GetMapping("/by-color/")
-    public ResponseEntity<List<CustomUser>> findUserByColor(String color){
+    @GetMapping("/by-color")
+    public ResponseEntity<List<CustomUser>> findUserByColor(@RequestParam("color") Color color){
         return status(HttpStatus.OK).body(articleService.findArticleByColour(color));
     }
 

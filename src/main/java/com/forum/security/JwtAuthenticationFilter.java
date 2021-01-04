@@ -44,6 +44,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
+        else if (!httpServletRequest.getRequestURI().matches("\\/api\\/auth\\/.+")) {
+            httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+        }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 

@@ -1,5 +1,6 @@
 package com.forum.repository;
 
+import com.forum.domain.Color;
 import com.forum.domain.CustomUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,7 +15,7 @@ public interface UserRepository extends JpaRepository<CustomUser, Long> {
     List<CustomUser> findUser(@Param("age") Integer age);
 
     @Query("SELECT a.user from Article a where a.color = :color")
-    List<CustomUser> findArticleByColor(@Param("color") String color);
+    List<CustomUser> findArticleByColor(@Param("color") Color color);
 
     @Query("select a.user from Article a group by a.user having count (a.id) > 3")
     List<CustomUser> findArticleByCount();
