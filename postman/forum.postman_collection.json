@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "26d2fe7b-3e5a-4503-90f4-6350eab78415",
+		"name": "forum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "filter age",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJjcmVhdGVkQXQiOjE2MTAwMzU5OTksImV4cCI6MTYxMDAzNjg5OSwidXNlcklkIjo2fQ.cIfLP10Ia8JjEd6fmTBe_Ezrc-EXjdPbdc8o3j6-YiSBFL25dzJvHzJYo9L4raZUi6wr1fTfLtolLZWhoFNarA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/users/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Vova\",\r\n    \"password\": \"a\",\r\n    \"age\": 122\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				},
+				"description": "Registration user"
+			},
+			"response": []
+		},
+		{
+			"name": "sign in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Vova\",\r\n    \"password\": \"a\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				},
+				"description": "Request to login of user"
+			},
+			"response": []
+		},
+		{
+			"name": "filter color",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJWb3ZhIiwiaWF0IjoxNjA5NzcxODQ3LCJleHAiOjE2MDk3NzI3NDd9.SZvEDmUJxXos5pBMR8DXbge9nd7aTK65PLH5P-L8MNfanRiO2bvmu0q1IEDVF0n2iXpySf3TYeTrkHtHEL6e4Gx004dQtY-CepzXsgHi-k89My8Ju5t3fKwumxInOtt_GlEt8gyQpDqk_P1oH9S_G_uO2u2BY0tfAnnQyiwjsnZpgjyCI5re7HijXQCuzweuyiKkx5e0sbytJ7oybhvbAuEbZNnYuWYaHvaUk60A03MXkjIP95te_u_YHfx39_8HVPH3v8NSmf9f0iWvH3e_FeMfv9aONZvXGd-6uOWgpAONMLsqqT_V7anZtgrisGnLM-eH-cmS5cxBH-YRtZVC3A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/by-color?color=RED",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"by-color"
+					],
+					"query": [
+						{
+							"key": "color",
+							"value": "RED"
+						}
+					]
+				},
+				"description": "Return all user, who have article some color"
+			},
+			"response": []
+		},
+		{
+			"name": "create article",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJjcmVhdGVkQXQiOjE2MTAwMzU5OTksImV4cCI6MTYxMDAzNjg5OSwidXNlcklkIjo2fQ.cIfLP10Ia8JjEd6fmTBe_Ezrc-EXjdPbdc8o3j6-YiSBFL25dzJvHzJYo9L4raZUi6wr1fTfLtolLZWhoFNarA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":\"Vova\",\r\n    \"color\":\"RED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/art",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"art"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users who have 3 and more article",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}

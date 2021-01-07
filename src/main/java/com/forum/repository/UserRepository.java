@@ -21,4 +21,6 @@ public interface UserRepository extends JpaRepository<CustomUser, Long> {
     List<CustomUser> findArticleByCount();
 
     Optional<CustomUser> findByName(@Param("name") String name);
+
+    CustomUser findCustomUserByName(@Param("name") String name);
 }

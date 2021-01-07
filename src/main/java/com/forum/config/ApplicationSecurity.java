@@ -1,6 +1,8 @@
 package com.forum.config;
 
-import com.forum.security.JwtAuthenticationFilter;
+import com.forum.security.JWTFilter;
+import com.forum.service.TokenService;
+import com.forum.service.impl.TokenServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,10 +17,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
-    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final TokenService tokenService;
+    private final JWTFilter jwtFilter;
 
-    public ApplicationSecurity(JwtAuthenticationFilter jwtAuthenticationFilter) {
-        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    public ApplicationSecurity(TokenService tokenService, JWTFilter jwtFilter) {
+        this.tokenService = tokenService;
+        this.jwtFilter = jwtFilter;
     }
 
     @Override
@@ -29,7 +33,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated();
 
-        http.addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean

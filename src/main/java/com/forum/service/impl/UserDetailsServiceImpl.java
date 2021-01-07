@@ -1,4 +1,4 @@
-package com.forum.service;
+package com.forum.service.impl;
 
 import com.forum.domain.CustomUser;
 import com.forum.repository.UserRepository;

@@ -1,10 +1,22 @@
 package com.forum.domain;
 
-public enum Color {
-    RED, BLUE, BLACK, WHITE, GREEN;
+import com.fasterxml.jackson.annotation.JsonValue;
 
-//    @Override
-//    public String toString() {
-//        return "Color_" + name();
-//    }
+public enum Color {
+    RED("RED"),
+    BLUE("BLUE"),
+    BLACK("BLACK"),
+    WHITE("WHITE"),
+    GREEN("GREEN");
+
+    private final String value;
+
+    private Color(String value){
+        this.value = value;
+    }
+
+    @JsonValue
+    final String value() {
+        return this.value;
+    }
 }

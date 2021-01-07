@@ -1,9 +1,8 @@
 package com.forum.controller;
 
-import com.forum.domain.Article;
 import com.forum.domain.Color;
 import com.forum.domain.CustomUser;
-import com.forum.repository.ArticleRepository;
+import com.forum.dto.ArticleDTO;
 import com.forum.service.ArticleService;
 import com.forum.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -27,7 +26,7 @@ public class MainController {
 
     @GetMapping("/by-age")
     public ResponseEntity<List<CustomUser>> findUserByAge(Integer age){
-        return status(HttpStatus.OK).body(userService.findUser(age));
+        return status(HttpStatus.OK).body(userService.findUserByAge(age));
     }
 
     @GetMapping("/by-color")
@@ -35,8 +34,14 @@ public class MainController {
         return status(HttpStatus.OK).body(articleService.findArticleByColour(color));
     }
 
-    @GetMapping("count")
+    @GetMapping("/count")
     public ResponseEntity<List<CustomUser>> findArticleByCount(){
-        return status(HttpStatus.OK).body(articleService.findArticleByCount() );
+        return status(HttpStatus.OK).body(articleService.findArticleByCount());
+    }
+
+    @PostMapping("/art")
+    public ResponseEntity<String> saveArticle(@RequestBody ArticleDTO article){
+        articleService.saveArticle(article);
+        return status(HttpStatus.OK).body("Article created successfully");
     }
 }
