@@ -39,9 +39,10 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Transactional
-    public void saveUser(CustomUser user) {
+    public boolean saveUser(CustomUser user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+        return true;
     }
 
     public AuthenticationResponse login(LoginRequest loginRequest){

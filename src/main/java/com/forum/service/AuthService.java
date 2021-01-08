@@ -5,7 +5,7 @@ import com.forum.dto.AuthenticationResponse;
 import com.forum.dto.LoginRequest;
 
 public interface AuthService {
-    void saveUser(CustomUser user);
+    boolean saveUser(CustomUser user);
     CustomUser getCurrentUser();
     AuthenticationResponse login(LoginRequest loginRequest);
 }

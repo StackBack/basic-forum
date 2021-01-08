@@ -28,12 +28,13 @@ public class ArticleServiceImpl implements ArticleService {
         return userRepository.findArticleByColor(color);
     }
 
-    public void saveArticle(ArticleDTO article){
+    public boolean saveArticle(ArticleDTO article){
         Article articleSave = new Article();
         articleSave.setText(article.getText());
         articleSave.setColor(article.getColor());
         articleSave.setUser(authService.getCurrentUser());
         articleRepository.save(articleSave);
+        return true;
     }
 
     public List<CustomUser> findArticleByCount() {

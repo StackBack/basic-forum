@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ArticleService{
     List<CustomUser> findArticleByColour(Color color);
-    void saveArticle(ArticleDTO article);
+    boolean saveArticle(ArticleDTO article);
     List<CustomUser> findArticleByCount();
 }
