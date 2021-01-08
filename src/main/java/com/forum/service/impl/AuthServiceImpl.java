@@ -25,17 +25,14 @@ public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final AuthenticationManager authenticationManager;
     private final TokenService tokenService;
-    private final JWTFilter jwtFilter;
 
-    public AuthServiceImpl(PasswordEncoder passwordEncoder,
-                           UserRepository userRepository,
+    public AuthServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository,
                            AuthenticationManager authenticationManager,
-                           TokenService tokenService, JWTFilter jwtFilter) {
+                           TokenService tokenService) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.authenticationManager = authenticationManager;
         this.tokenService = tokenService;
-        this.jwtFilter = jwtFilter;
     }
 
     @Transactional
